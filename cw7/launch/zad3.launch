@@ -1,0 +1,12 @@
+<launch>
+	<node name="source1" pkg="cw7" type="zrodlo_sin.py">
+		<remap from="/u" to="/x1"/>
+	</node>
+	<node pkg="rosbag" type="play" name="x2" args="$(find cw7)/logi/plik.bag"/>
+	
+	<node name="sum" pkg="cw7" type="sumator.py">
+		<remap from="/y" to="/u"/>
+	</node>
+		<node name="obj" pkg="cw7" type="obiekt_inercja.py">
+	</node>
+</launch>

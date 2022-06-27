@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="my_robot">
+  
+
+<!-- materialy -->
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0"/>
+  </material>
+  
+  <material name="green">
+    <color rgba="0.0 1.0 0.0 1.0"/>
+  </material>
+  
+  <material name="blue">
+    <color rgba="0.0 0.0 1.0 1.0"/>
+  </material>
+
+
+  <!-- czlony -->
+  <link name="podstawa1">
+    <visual>
+      <geometry>
+        <box size="2 2 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="zlacze_podstawa" type="fixed">
+      <parent link="podstawa1"/>
+      <child link="podstawa2"/>
+    </joint>
+
+  <link name="podstawa2">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.7"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0.5"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="baza_1os" type="revolute">
+      <parent link="podstawa2"/>
+      <child link="1_os1"/>
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-1.8" upper="1.8" velocity="1.0"/>
+    </joint>
+
+  <link name="1_os1">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.7"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+
+
+  <joint name="zlacze_1os1" type="fixed">
+    <parent link="1_os1"/>
+    <child link="1_os2"/>
+  </joint>
+  
+  <link name="1_os2">
+    <visual>
+      <geometry>
+        <box size="0.4 0.5 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.5 0 1"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="zlacze_1os2" type="fixed">
+    <parent link="1_os2"/>
+    <child link="1_os3"/>
+  </joint>
+  
+  <link name="1_os3">
+    <visual>
+      <geometry>
+        <box size="0.4 0.5 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.5 0 1"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+
+  <joint name="1_os-2_os" type="revolute">
+      <parent link="1_os1"/>
+      <child link="2_os1"/>
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-1" upper="1" velocity="1.0"/>
+    </joint>
+
+  <link name="2_os1">
+    <visual>
+      <geometry>
+        <box size="0.6 1 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.8"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+    <joint name="zlacze_2os2" type="fixed">
+      <parent link="2_os1"/>
+      <child link="2_os2"/>
+    </joint>
+    
+    <link name="2_os2">
+      <visual>
+        <geometry>
+          <box size="1 1 2"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 2"/>
+        <material name="green">
+        </material>
+      </visual>
+
+      <collision>
+        <geometry>
+          <box size="1 1 0.5"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+
+      <innertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+      </innertial>
+    </link>
+
+  <joint name="zlacze_2os3" type="fixed">
+    <parent link="2_os2"/>
+    <child link="2_os3"/>
+  </joint>
+  
+  <link name="2_os3">
+    <visual>
+      <geometry>
+        <box size="0.4 0.5 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.5 0 3.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="zlacze_2os4" type="fixed">
+    <parent link="2_os2"/>
+    <child link="2_os4"/>
+  </joint>
+  
+  <link name="2_os4">
+    <visual>
+      <geometry>
+        <box size="0.4 0.5 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.5 0 3.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="2_os-3_os" type="revolute">
+      <parent link="2_os2"/>
+      <child link="3_os1"/>
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 4"/>
+      <limit effort="1000.0" lower="-1" upper="1" velocity="1.0"/>
+    </joint>
+
+  <link name="3_os1">
+    <visual>
+      <geometry>
+        <box size="0.6 1 2.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.8"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+
+<joint name="zlacze_3os2" type="fixed">
+    <parent link="3_os1"/>
+    <child link="3_os2"/>
+  </joint>
+  
+  <link name="3_os2">
+    <visual>
+      <geometry>
+        <box size="0.2 0.3 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.4 0 2"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+  
+  <joint name="zlacze_3os3" type="fixed">
+    <parent link="3_os2"/>
+    <child link="3_os3"/>
+  </joint>
+  
+  <link name="3_os3">
+    <visual>
+      <geometry>
+        <box size="0.2 0.3 1.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.4 0 2"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+<joint name="3_os-4_os" type="revolute">
+      <parent link="3_os2"/>
+      <child link="4_os1"/>
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 2.5"/>
+      <limit effort="1000.0" lower="-1.5" upper="1,5" velocity="1.0"/>
+    </joint>
+
+  <link name="4_os1">
+    <visual>
+      <geometry>
+        <box size="0.6 1 1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="green">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.8"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="zlacze_4os2" type="fixed">
+    <parent link="4_os1"/>
+    <child link="4_os2"/>
+  </joint>
+
+  <link name="4_os2">
+    <visual>
+      <geometry>
+        <cylinder length="2" radius="0.3"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 1.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0.5"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+ 
+<joint name="4_os-5_os" type="revolute">
+      <parent link="4_os2"/>
+      <child link="5_os1"/>
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0 1.5"/>
+      <limit effort="1000.0" lower="-1.8" upper="1.8" velocity="1.0"/>
+    </joint>
+
+<link name="5_os1">
+    <visual>
+      <geometry>
+        <box size="0.1 0.2 1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.2 0 1.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+
+<joint name="zlacze_5os2" type="fixed">
+    <parent link="5_os1"/>
+    <child link="5_os2"/>
+  </joint>
+
+  <link name="5_os2">
+    <visual>
+      <geometry>
+        <box size="0.1 0.2 1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.2 0 1.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+  <joint name="5_os-6_os" type="revolute">
+      <parent link="5_os1"/>
+      <child link="6_os1"/>
+      <axis xyz="1 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 1.5"/>
+      <limit effort="1000.0" lower="-1.5" upper="1.5" velocity="1.0"/>
+    </joint>
+
+<link name="6_os1">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <material name="red">
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+
+    <innertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="1" ixz="1" iyy="1" iyz="1" izz="1"/>
+    </innertial>
+  </link>
+
+
+
+
+</robot>

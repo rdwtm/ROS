@@ -1,0 +1,17 @@
+<launch>
+	<node name="source" pkg="cw7" type="zrodlo_sin.py">
+		<remap from="/u" to="/w"/>
+	</node>
+
+	<node name="sum" pkg="cw7" type="sumator.py">
+		<remap from="/y" to="/e"/>
+		<remap from="/x1" to="/w"/>
+		<remap from="/x2" to="/y1"/>
+	</node>
+	<node name="reg" pkg="cw7" type="regulator_pid.py">
+	</node>
+	
+	<node name="obj" pkg="cw7" type="obiekt_inercja.py">
+		<remap from="/y" to="/y1"/>
+	</node>
+</launch>

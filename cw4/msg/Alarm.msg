@@ -1,0 +1,5 @@
+string typ_alarmu
+float32 wartosc
+float32 czas
+float32 przekroczenie_dol
+float32 przekroczenie_gora

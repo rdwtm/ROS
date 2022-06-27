@@ -1,0 +1,13 @@
+<launch>
+	<node name="source1" pkg="cw7" type="zrodlo_sin.py">
+		<remap from="/u" to="/x1"/>
+	</node>
+	<node name="soucre2" pkg="cw7" type="zrodlo_ramp.py">
+		<remap from="/u" to="/x2"/>
+	</node>
+	<node name="sum" pkg="cw7" type="sumator.py">
+		<remap from="/y" to="/u"/>
+	</node>
+		<node name="obj" pkg="cw7" type="obiekt_inercja.py">
+	</node>
+</launch>

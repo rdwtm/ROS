@@ -1,0 +1,6 @@
+<launch>
+	<node name="zolw1" pkg="turtlesim" type="turtlesim_node">
+	</node>
+	<node name="zolw2" pkg="turtlesim" type="turtlesim_node">
+	</node>
+</launch>
